@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <Properties>
+        <Property name="log-path">C:/logs/</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <RollingFile name="RollingFile" fileName="${log-path}/keystore.log"
+                     filePattern="${log-path}/keystore-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="5000 KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.example" level="TRACE" additivity="false">
+            <Appender-Ref ref="Console"/>
+        </Logger>
+        <Logger name="com.example" level="TRACE" additivity="true">
+            <Appender-Ref ref="RollingFile"/>
+        </Logger>
+        <Root level="ERROR">
+            <Appender-Ref ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

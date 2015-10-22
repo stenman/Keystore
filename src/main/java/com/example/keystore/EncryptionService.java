@@ -1,3 +1,5 @@
+package com.example.keystore;
+
 public interface EncryptionService {
     boolean authenticate(String attemptedPassword, byte[] encryptedPassword, byte[] salt);
 
