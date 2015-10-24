@@ -1,5 +1,8 @@
 package com.example.keystore;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PasswordEncryptionService implements EncryptionService{
 
     public boolean authenticate(String attemptedPassword, byte[] encryptedPassword, byte[] salt) {

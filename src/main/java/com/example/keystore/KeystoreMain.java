@@ -12,7 +12,7 @@ public class KeystoreMain {
     public static void main(String[] args) {
         logger.info("Initializing Spring context.");
 
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/applicationContext.xml");
         EncryptionService passwordEncryptionService = (EncryptionService) applicationContext.getBean("passwordEncryptionService");
     }
 
