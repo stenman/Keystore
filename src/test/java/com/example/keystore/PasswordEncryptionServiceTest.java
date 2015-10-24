@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Base64;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/applicationContext-test.xml"})
@@ -20,14 +21,27 @@ public class PasswordEncryptionServiceTest {
     PasswordEncryptionService passwordEncryptionService;
 
     @Test
-    public void generateSaltTest() throws NoSuchAlgorithmException {
-        //TODO: Use NATIVEPRNG instance instead?
+    public void saltShouldBeCorrectLength_generateSaltTest() throws NoSuchAlgorithmException {
         SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
         byte[] salt = new byte[8];
         secureRandom.nextBytes(salt);
 
-        byte[] expectedSalt = passwordEncryptionService.generateSalt();
+        String expectedSalt = Base64.getEncoder().encodeToString(salt);
+        byte[] testTargetSalt = passwordEncryptionService.generateSalt();
+        String actualSalt = Base64.getEncoder().encodeToString(testTargetSalt);
 
-        assertEquals(expectedSalt, salt);
+        assertEquals(expectedSalt.length(), actualSalt.length());
+    }
+
+    @Test
+    public void saltShouldEndWithEquals_generateSaltTest() throws NoSuchAlgorithmException {
+        SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
+        byte[] salt = new byte[8];
+        secureRandom.nextBytes(salt);
+
+        byte[] testTargetSalt = passwordEncryptionService.generateSalt();
+        String actualSalt = Base64.getEncoder().encodeToString(testTargetSalt);
+
+        assertEquals("=", actualSalt.substring(11, 12));
     }
 }
