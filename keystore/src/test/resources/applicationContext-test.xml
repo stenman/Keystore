@@ -10,7 +10,7 @@
     <context:component-scan base-package="com.example.keystore"/>
 
     <!--<bean id="passwordEncryptionService"-->
-          <!--class="com.example.keystore.PasswordEncryptionService">-->
+    <!--class="com.example.keystore.PasswordEncryptionService">-->
     <!--</bean>-->
 
 </beans>
