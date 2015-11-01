@@ -13,7 +13,9 @@ public class KeystoreMain {
         logger.info("Initializing Spring context.");
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/applicationContext.xml");
-        EncryptionService passwordEncryptionService = (EncryptionService) applicationContext.getBean("passwordEncryptionService");
+        RunTheApplication runTheApplication = (RunTheApplication) applicationContext.getBean("runTheApplication");
+
+        runTheApplication.startStuff();
     }
 
 }
