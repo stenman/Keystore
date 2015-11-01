@@ -16,6 +16,7 @@
         <log4j2-version>2.4.1</log4j2-version>
         <org.springframework.version>4.2.2.RELEASE</org.springframework.version>
         <mybatis.version>3.3.0</mybatis.version>
+        <hsqldb.version>2.3.2</hsqldb.version>
     </properties>
 
     <dependencyManagement>
@@ -33,6 +34,11 @@
     </dependency>
 
     <!--Database-->
+    <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>${hsqldb.version}</version>
+    </dependency>
     <dependency>
         <groupId>org.mybatis</groupId>
         <artifactId>mybatis</artifactId>
