@@ -1,3 +1,5 @@
+package com.example.keystore;
+
 import org.hsqldb.Server;
 import org.hsqldb.persist.HsqlProperties;
 import org.hsqldb.server.ServerAcl;
@@ -7,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 //TODO: Fix this --> ERROR StatusLogger No log4j2 configuration file found. Using default configuration: logging only errors to the console.
+//TODO: Check that target/mem:test works
 public class HsqldbRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(HsqldbRunner.class);
