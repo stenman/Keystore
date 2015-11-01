@@ -34,6 +34,8 @@ public class HsqldbRunner {
         hsqlProperties.setProperty("server.port", "9001");
         hsqlProperties.setProperty("server.database.0", "file:" + dbFolder);
         hsqlProperties.setProperty("server.silent", "false");
+        //TODO: Determine LOCK method
+        //hsqlProperties.setProperty("hsqldb.tx", "mvcc");
 
         boolean create = args[1].trim().equalsIgnoreCase("true");
         if (create) {

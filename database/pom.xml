@@ -71,6 +71,43 @@
                 </plugins>
             </build>
         </profile>
+
+        <profile>
+            <id>migrate-hsqldb</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.flywaydb</groupId>
+                        <artifactId>flyway-maven-plugin</artifactId>
+                        <version>3.0</version>
+                        <configuration>
+                            <url>jdbc:hsqldb:hsql://localhost:9001/keystore</url>
+                            <user>sa</user>
+                            <initOnMigrate>true</initOnMigrate>
+                            <locations>
+                                <location>db/migration/hsqldb</location>
+                            </locations>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>test-compile</phase>
+                                <goals>
+                                    <goal>migrate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.hsqldb</groupId>
+                                <artifactId>hsqldb</artifactId>
+                                <version>2.3.3</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
+
 
 </project>
