@@ -1,9 +1,11 @@
 package com.example.mappers;
 
 import com.example.keystore.User;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public interface UserMapper {
     public void insertUser(User user);
 

@@ -13,36 +13,38 @@
     </resultMap>
 
     <insert id='insertUser' parameterType='User' useGeneratedKeys='true' keyProperty='userId'>
-        INSERT INTO USER(email_id, first_name, last_name, password)
-        VALUES(#{emailId}, #{firstName}, #{lastName, #{password}})
+        INSERT INTO USER (email_id, first_name, last_name, password)
+        VALUES (#{emailId}, #{firstName}, #{lastName}, #{password})
     </insert>
 
     <select id='getUserById' parameterType='int' resultType='com.example.keystore.User'>
-                        SELECT
-                        user_id as userId,
-                        email_id as emailId,
-                        first_name as firstName,
-                        last_name as lastName
-                        password as password,
-                        FROM USER
-                        WHERE USER_ID = #{userId}
-                </select>
+        SELECT
+            user_id     AS userId,
+            email_id    AS emailId,
+            first_name  AS firstName,
+            last_name   AS lastName,
+            password    AS password
+        FROM USER
+        WHERE USER_ID = #{userId}
+    </select>
 
     <select id='getAllUsers' resultMap='UserResult'>
-                        SELECT * FROM USER
-                </select>
+        SELECT *
+        FROM USER
+    </select>
 
     <update id='updateUser' parameterType='User'>
-                        UPDATE USER
-                        SET
-                        EMAIL_ID = #{emailId},
-                        FIRST_NAME = #{firstName},
-                        LAST_NAME = #{lastName}
-                        PASSWORD= #{password},
-                        WHERE USER_ID = #{userId}
-                </update>
+        UPDATE USER
+        SET
+            EMAIL_ID = #{emailId},
+            FIRST_NAME = #{firstName},
+            LAST_NAME = #{lastName},
+            PASSWORD= #{password}
+        WHERE USER_ID = #{userId}
+    </update>
 
     <delete id='deleteUser' parameterType='int'>
-                        DELETE FROM USER WHERE USER_ID = #{userId}
-                </delete>
+        DELETE FROM USER
+        WHERE USER_ID = #{userId}
+    </delete>
 </mapper>

@@ -1,5 +1,8 @@
 package com.example.keystore;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class User {
 
     private int userId;

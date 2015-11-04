@@ -13,9 +13,9 @@ public class KeystoreMain {
         logger.info("Initializing Spring context.");
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/applicationContext.xml");
-        RunTheApplication runTheApplication = (RunTheApplication) applicationContext.getBean("runTheApplication");
+        KeystoreService keystoreService = (KeystoreService) applicationContext.getBean("keystoreService");
 
-        runTheApplication.startStuff();
+        keystoreService.startService();
     }
 
 }
