@@ -16,6 +16,10 @@ public class KeystoreMain {
         KeystoreService keystoreService = (KeystoreService) applicationContext.getBean("keystoreService");
 
         keystoreService.startService();
+
+        User user = new User("hej@hej.com", "Olle", "Pall", "ollepall");
+
+//        keystoreService.insertUser(user);
     }
 
 }

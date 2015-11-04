@@ -11,6 +11,17 @@ public class User {
     private String lastName;
     private String password;
 
+    public User() {
+    }
+
+    //TODO: Create a user without id will set the id to 0. This is what getUserId will return. Fix!
+    public User(String emailId, String firstName, String lastName, String password) {
+        this.emailId = emailId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+    }
+
     public int getUserId() {
         return userId;
     }
