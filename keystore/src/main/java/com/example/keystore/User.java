@@ -14,7 +14,7 @@ public class User {
     public User() {
     }
 
-    //TODO: Create a user without id will set the id to 0. This is what getUserId will return. Fix!
+    //TODO: Create a user without id will set the id to 0. This is what getUserId will return before the entity is fetched from DB. Fix!
     public User(String emailId, String firstName, String lastName, String password) {
         this.emailId = emailId;
         this.firstName = firstName;
@@ -60,5 +60,16 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", emailId='" + emailId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

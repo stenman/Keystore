@@ -13,8 +13,7 @@
     </resultMap>
 
     <insert id='insertUser' parameterType='User' useGeneratedKeys='true' keyProperty='userId'>
-        INSERT INTO USER (email_id, first_name, last_name, password)
-        VALUES (#{emailId}, #{firstName}, #{lastName}, #{password})
+        INSERT INTO CREDENTIALS (email_id, first_name, last_name, password) VALUES (#{emailId}, #{firstName}, #{lastName}, #{password})
     </insert>
 
     <select id='getUserById' parameterType='int' resultType='com.example.keystore.User'>
@@ -24,17 +23,17 @@
             first_name  AS firstName,
             last_name   AS lastName,
             password    AS password
-        FROM USER
+        FROM CREDENTIALS
         WHERE USER_ID = #{userId}
     </select>
 
     <select id='getAllUsers' resultMap='UserResult'>
         SELECT *
-        FROM USER
+        FROM CREDENTIALS
     </select>
 
     <update id='updateUser' parameterType='User'>
-        UPDATE USER
+        UPDATE CREDENTIALS
         SET
             EMAIL_ID = #{emailId},
             FIRST_NAME = #{firstName},
@@ -44,7 +43,7 @@
     </update>
 
     <delete id='deleteUser' parameterType='int'>
-        DELETE FROM USER
+        DELETE FROM CREDENTIALS
         WHERE USER_ID = #{userId}
     </delete>
 </mapper>

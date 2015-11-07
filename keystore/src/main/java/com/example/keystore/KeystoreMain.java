@@ -5,6 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+/**
+ * A class meant for laborating during development, remove when Service is implemented
+ */
+//TODO: Remove this class when tests and Service is in place
 public class KeystoreMain {
 
     final static Logger logger = LoggerFactory.getLogger(KeystoreMain.class);
@@ -15,10 +19,7 @@ public class KeystoreMain {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/applicationContext.xml");
         KeystoreService keystoreService = (KeystoreService) applicationContext.getBean("keystoreService");
 
-        keystoreService.startService();
-
-        User user = new User("hej@hej.com", "Olle", "Pall", "ollepall");
-
+//        User user = new User("hej@hej.com", "Olle", "Pall", "ollepall");
 //        keystoreService.insertUser(user);
     }
 

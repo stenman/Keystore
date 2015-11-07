@@ -3,45 +3,33 @@ package com.example.keystore;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.Reader;
 
-//TODO: Change name of this class and its methods.
-//TODO: Also, this is probably not the way it should be implemented. Fix later.
 @Component
 public class MyBatisUtil {
 
-//    public SqlSessionFactory gogo() {
-//        InputStream inputStream = ClassLoader.class.getResourceAsStream("/mybatis-config.xml");
-//        return new SqlSessionFactoryBuilder().build(inputStream);
-//    }
+    private static final Logger logger = LoggerFactory.getLogger(MyBatisUtil.class);
 
     private static SqlSessionFactory factory;
 
     @PostConstruct
-    public void hej(){
-        InputStream inputStream = null;
+    public void buildSqlSessionFactory() {
+        Reader reader;
         try {
-            inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+            reader = Resources.getResourceAsReader("mybatis-config.xml");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
-//        InputStream inputStream = ClassLoader.class.getResourceAsStream("/mybatis-config.xml");
-        factory = new SqlSessionFactoryBuilder().build(inputStream);
-        System.out.println("");
-//        Reader reader = null;
-//        try {
-//            reader = Resources.getResourceAsReader("mybatis-config.xml");
-//        } catch (IOException e) {
-//            throw new RuntimeException(e.getMessage());
-//        }
-//        factory = new SqlSessionFactoryBuilder().build(reader);
+        factory = new SqlSessionFactoryBuilder().build(reader);
     }
 
-    public static SqlSessionFactory getSqlSessionFactory() {
+    public SqlSessionFactory getSqlSessionFactory() {
         return factory;
     }
 }

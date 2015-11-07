@@ -2,13 +2,17 @@ package com.example.keystore;
 
 import com.example.mappers.UserMapper;
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-//TODO: Change name of this class and its methods.
-//TODO: Also, this is probably not the way it should be implemented. Fix later.
+//TODO: Should this be a @Service?
 @Component
 public class KeystoreService {
+
+    private static final Logger logger = LoggerFactory.getLogger(KeystoreService.class);
+
     @Autowired
     MyBatisUtil myBatisUtil;
 
@@ -18,12 +22,9 @@ public class KeystoreService {
     @Autowired
     User user;
 
-    public void startService() {
-        System.out.println("It works!");
-    }
-
     public void insertUser(User user) {
-        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        SqlSession sqlSession = myBatisUtil.getSqlSessionFactory().openSession();
+        logger.info("Inserting user {}", user.toString());
         try {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             userMapper.insertUser(user);
