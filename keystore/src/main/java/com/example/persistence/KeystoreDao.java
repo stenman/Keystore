@@ -1,6 +1,7 @@
-package com.example.keystore;
+package com.example.persistence;
 
-import com.example.mappers.UserMapper;
+import com.example.domain.User;
+import com.example.keystore.PasswordEncryptionService;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,9 +10,9 @@ import org.springframework.stereotype.Component;
 
 //TODO: Should this be a @Service?
 @Component
-public class KeystoreService {
+public class KeystoreDao {
 
-    private static final Logger logger = LoggerFactory.getLogger(KeystoreService.class);
+    private static final Logger logger = LoggerFactory.getLogger(KeystoreDao.class);
 
     @Autowired
     MyBatisUtil myBatisUtil;
@@ -29,6 +30,17 @@ public class KeystoreService {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             userMapper.insertUser(user);
             sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    public User getUser(int userId) {
+        SqlSession sqlSession = myBatisUtil.getSqlSessionFactory().openSession();
+        logger.info("Fetching user with id={}", userId);
+        try {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            return userMapper.getUserById(userId);
         } finally {
             sqlSession.close();
         }

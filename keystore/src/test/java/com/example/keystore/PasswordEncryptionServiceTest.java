@@ -13,7 +13,7 @@ import java.util.Base64;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/applicationContext-test.xml"})
+@ContextConfiguration(locations = {"/test-applicationContext.xml"})
 public class PasswordEncryptionServiceTest {
 
     @Autowired

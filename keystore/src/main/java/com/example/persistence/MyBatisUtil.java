@@ -1,4 +1,4 @@
-package com.example.keystore;
+package com.example.persistence;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -26,7 +26,8 @@ public class MyBatisUtil {
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage());
         }
-        factory = new SqlSessionFactoryBuilder().build(reader);
+        //TODO: Environment is hardcoded, fix this!
+        factory = new SqlSessionFactoryBuilder().build(reader, "development");
     }
 
     public SqlSessionFactory getSqlSessionFactory() {

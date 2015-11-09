@@ -1,6 +1,6 @@
-package com.example.mappers;
+package com.example.persistence;
 
-import com.example.keystore.User;
+import com.example.domain.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

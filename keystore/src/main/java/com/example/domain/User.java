@@ -1,4 +1,4 @@
-package com.example.keystore;
+package com.example.domain;
 
 import org.springframework.stereotype.Component;
 
