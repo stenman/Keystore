@@ -14,9 +14,9 @@
         <property name="password" value=""/>
     </bean>
 
-    <!--<jdbc:embedded-database id="dataSource" type="HSQL">-->
-        <!--<jdbc:script location="classpath:V1__create_schema.sql"/>-->
-        <!--<jdbc:script location="insert-test-data.sql"/>-->
-    <!--</jdbc:embedded-database>-->
+    <jdbc:embedded-database id="dataSource" type="HSQL">
+        <jdbc:script location="classpath:db/migration/hsqldb/V1__create_schema.sql"/>
+        <jdbc:script location="insert-test-data.sql"/>
+    </jdbc:embedded-database>
 
 </beans>
