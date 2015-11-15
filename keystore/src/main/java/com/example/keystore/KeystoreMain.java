@@ -24,8 +24,8 @@ public class KeystoreMain {
 //        User user = new User("hej@hej.com", "Olle", "Pall", "ollepall");
 //        keystoreService.insertUser(user);
 
-        User user = keystoreDao.getUser(1);
-        System.out.println(user.toString());
+//        User user = keystoreDao.getUser(1);
+//        System.out.println(user.toString());
     }
 
 }

@@ -9,4 +9,8 @@
 
     <context:component-scan base-package="com.example"/>
 
+    <bean id="myBatisUtil" class="com.example.persistence.MyBatisUtil">
+        <constructor-arg value="test"/>
+    </bean>
+
 </beans>

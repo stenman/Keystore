@@ -25,10 +25,22 @@ public class KeystoreDao {
 
     public void insertUser(User user) {
         SqlSession sqlSession = myBatisUtil.getSqlSessionFactory().openSession();
-        logger.info("Inserting user {}", user.toString());
+        logger.info("Inserting user: {}", user.toString());
         try {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             userMapper.insertUser(user);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    public void deleteUser(int userId) {
+        SqlSession sqlSession = myBatisUtil.getSqlSessionFactory().openSession();
+        logger.info("Deleting user with id: {}", userId);
+        try {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper.deleteUser(userId);
             sqlSession.commit();
         } finally {
             sqlSession.close();

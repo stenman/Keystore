@@ -9,13 +9,7 @@
 
     <context:component-scan base-package="com.example"/>
 
-    <!--<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"-->
-    <!--destroy-method="close">-->
-    <!--<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>-->
-    <!--<property name="url" value="jdbc:hsqldb:mem:test;sql.syntax_ora=true"/>-->
-    <!--<property name="username" value="sa"/>-->
-    <!--<property name="password" value=""/>-->
-    <!--</bean>-->
-
-
+    <bean id="myBatisUtil" class="com.example.persistence.MyBatisUtil">
+        <constructor-arg value="development"/>
+    </bean>
 </beans>

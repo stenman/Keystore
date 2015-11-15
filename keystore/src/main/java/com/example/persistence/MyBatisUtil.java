@@ -18,6 +18,12 @@ public class MyBatisUtil {
 
     private static SqlSessionFactory factory;
 
+    private String environment;
+
+    public MyBatisUtil(String environment) {
+        this.environment = environment;
+    }
+
     @PostConstruct
     public void buildSqlSessionFactory() {
         Reader reader;
@@ -27,7 +33,7 @@ public class MyBatisUtil {
             throw new RuntimeException(e.getMessage());
         }
         //TODO: Environment is hardcoded, fix this!
-        factory = new SqlSessionFactoryBuilder().build(reader, "development");
+        factory = new SqlSessionFactoryBuilder().build(reader, environment);
     }
 
     public SqlSessionFactory getSqlSessionFactory() {
