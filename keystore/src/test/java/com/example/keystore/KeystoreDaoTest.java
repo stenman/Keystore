@@ -10,10 +10,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.*;
-
 import javax.annotation.PostConstruct;
 import java.sql.SQLException;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/test-applicationContext.xml", "/test-in-memory-database.xml"})
@@ -45,6 +45,8 @@ public class KeystoreDaoTest {
     }
 
     //TODO: The database is not properly resetted between tests, fix!
+    //TODO: Either TRUNCATE/DROP tables and build them up anew
+    //TODO: ... or Rollback in a @Transaction
 
 //    @Test
 //    public void shouldDeleteUser_deleteUser() throws SQLException {
