@@ -7,13 +7,13 @@ import java.util.List;
 
 @Component
 public interface UserMapper {
-    public void insertUser(User user);
+    void insertUser(User user);
 
-    public User getUserById(Integer userId);
+    User getUserById(Integer userId);
 
-    public List<User> getAllUsers();
+    List<User> getAllUsers();
 
-    public void updateUser(User user);
+    void updateUser(User user);
 
-    public void deleteUser(Integer userId);
+    void deleteUser(Integer userId);
 }

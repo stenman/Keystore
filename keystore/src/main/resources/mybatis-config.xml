@@ -9,7 +9,6 @@
     </typeAliases>
     <environments default='development'>
 
-        <!--TODO: I guess this env should look similar to the one in test. Fix!-->
         <environment id='development'>
             <transactionManager type='JDBC'/>
             <dataSource type='POOLED'>
@@ -21,6 +20,7 @@
         </environment>
 
         <environment id="test">
+            <!--Use MANAGED for container managed transactions-->
             <transactionManager type="JDBC"/>
             <dataSource type='POOLED'>
                 <property name='driver' value='${jdbc.test.driverClassName}'/>

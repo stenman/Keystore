@@ -49,10 +49,22 @@ public class KeystoreDao {
 
     public User getUser(int userId) {
         SqlSession sqlSession = myBatisUtil.getSqlSessionFactory().openSession();
-        logger.info("Fetching user with id={}", userId);
+        logger.info("Fetching user with id: {}", userId);
         try {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             return userMapper.getUserById(userId);
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    public void updateUser(User user) {
+        SqlSession sqlSession = myBatisUtil.getSqlSessionFactory().openSession();
+        logger.info("Updating user with id: {}", user.getUserId());
+        try {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper.updateUser(user);
+            sqlSession.commit();
         } finally {
             sqlSession.close();
         }
