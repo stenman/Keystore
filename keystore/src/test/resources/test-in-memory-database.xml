@@ -28,7 +28,7 @@
     <!--ALTERNATIVE 2 DB BUILDUP - didn't get it working for each test though-->
     <!--<jdbc:initialize-database data-source="dataSource">-->
     <!--<jdbc:script location="classpath:db/migration/hsqldb/V1__create_schema.sql"/>-->
-    <!--<jdbc:script location="insert-test-data.sql"/>-->
+    <!--<jdbc:script location="V10__insert-test-data.sql"/>-->
     <!--</jdbc:initialize-database>-->
 
 

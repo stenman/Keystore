@@ -1,6 +1,5 @@
 package com.example.keystore;
 
-import com.example.domain.User;
 import com.example.persistence.KeystoreDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
