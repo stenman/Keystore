@@ -19,7 +19,7 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Logger name="consolelogger" level="trace" additivity="false">
+        <Logger name="consolelogger" level="info" additivity="false">
             <Appender-Ref ref="Console"/>
         </Logger>
         <Logger name="rollingfilelogger" level="error" additivity="true">

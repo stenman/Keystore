@@ -19,6 +19,7 @@
         <springframework.version>4.2.2.RELEASE</springframework.version>
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
         <hikaricp.version>2.4.1</hikaricp.version>
+        <flyway-spring4-test.version>3.2.1.1</flyway-spring4-test.version>
     </properties>
 
     <dependencyManagement>
@@ -29,7 +30,6 @@
                 <artifactId>database</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
 
             <!--Spring-->
             <dependency>
@@ -69,6 +69,12 @@
                 <groupId>com.zaxxer</groupId>
                 <artifactId>HikariCP</artifactId>
                 <version>${hikaricp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.flywaydb.flyway-test-extensions</groupId>
+                <artifactId>flyway-spring4-test</artifactId>
+                <version>${flyway-spring4-test.version}</version>
+                <scope>test</scope>
             </dependency>
 
             <!--Test-->
