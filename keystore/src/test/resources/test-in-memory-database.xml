@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
-	   					   http://www.springframework.org/schema/jdbc
-                           http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd">
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="test-applicationContext.xml"/>
 
     <bean id="flywayFactory" class="org.flywaydb.test.junit.FlywayHelperFactory" depends-on="dataSource"/>
 
@@ -13,23 +12,5 @@
           factory-method="createFlyway">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-
-    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-        <property name="url" value="jdbc:hsqldb:mem:testdb"/>
-        <property name="username" value="sa"/>
-        <property name="password" value=""/>
-    </bean>
-
-    <!--ALTERNATIVE 2 DB BUILDUP - didn't get it working for each test though-->
-    <!--<jdbc:initialize-database data-source="dataSource">-->
-    <!--<jdbc:script location="classpath:db/migration/hsqldb/V1__create_schema.sql"/>-->
-    <!--<jdbc:script location="V10__insert-test-data.sql"/>-->
-    <!--</jdbc:initialize-database>-->
-
 
 </beans>

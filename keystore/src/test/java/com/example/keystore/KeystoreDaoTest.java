@@ -19,10 +19,8 @@ import java.sql.SQLException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/test-applicationContext.xml", "/flywayContainerContext.xml"})
-//@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@ContextConfiguration(locations = {"/test-applicationContext.xml", "/test-in-memory-database.xml"})
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class, FlywayTestExecutionListener.class})
-//@FlywayTest(locationsForMigrate = { "db/migration" })
 public class KeystoreDaoTest {
 
     @Autowired
@@ -45,12 +43,6 @@ public class KeystoreDaoTest {
         //act
         //assert
     }
-
-    //TODO: The database is not properly resetted between tests, fix!
-    //TODO: Either TRUNCATE/DROP tables and build them up anew in @Before and @After
-    //TODO: ... or Rollback in a @Transaction
-    //TODO: ... or let Flyway take care of it
-    //TODO: ... or use @DirtiesContext and do the buildup/teardown with spring jdbc:embedded/initialize in xml (slooow)
 
     @Test
     @FlywayTest(locationsForMigrate = {"db/migration"})
