@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 //TODO: Should this be a @Service?
 @Component
 public class KeystoreDao {
@@ -35,24 +37,23 @@ public class KeystoreDao {
         }
     }
 
-    public void deleteUser(int userId) {
-        SqlSession sqlSession = myBatisUtil.getSqlSessionFactory().openSession();
-        logger.info("Deleting user with id: {}", userId);
-        try {
-            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-            userMapper.deleteUser(userId);
-            sqlSession.commit();
-        } finally {
-            sqlSession.close();
-        }
-    }
-
-    public User getUser(int userId) {
+    public User getUserById(int userId) {
         SqlSession sqlSession = myBatisUtil.getSqlSessionFactory().openSession();
         logger.info("Fetching user with id: {}", userId);
         try {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             return userMapper.getUserById(userId);
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    public List<User> getAllUsers() {
+        SqlSession sqlSession = myBatisUtil.getSqlSessionFactory().openSession();
+        logger.info("Fetching all users");
+        try {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            return userMapper.getAllUsers();
         } finally {
             sqlSession.close();
         }
@@ -69,4 +70,17 @@ public class KeystoreDao {
             sqlSession.close();
         }
     }
+
+    public void deleteUser(int userId) {
+        SqlSession sqlSession = myBatisUtil.getSqlSessionFactory().openSession();
+        logger.info("Deleting user with id: {}", userId);
+        try {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper.deleteUser(userId);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
 }
