@@ -19,6 +19,6 @@
     <modules>
         <module>poms</module>
         <module>database</module>
-        <module>keystore</module>
+        <module>domain</module>
     </modules>
 </project>
