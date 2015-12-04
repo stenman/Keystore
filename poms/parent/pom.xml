@@ -20,6 +20,7 @@
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
         <hikaricp.version>2.4.1</hikaricp.version>
         <flyway-spring4-test.version>3.2.1.1</flyway-spring4-test.version>
+        <apache-commons-codec.version>1.10</apache-commons-codec.version>
     </properties>
 
     <dependencyManagement>
@@ -46,6 +47,13 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
                 <version>${springframework.version}</version>
+            </dependency>
+
+            <!--apache commons-->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${apache-commons-codec.version}</version>
             </dependency>
 
             <!--Database-->
