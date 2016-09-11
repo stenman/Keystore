@@ -1,6 +1,7 @@
 package com.example.keystore;
 
 import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +15,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
-import java.util.Base64;
 
 import static org.junit.Assert.assertEquals;
 
@@ -31,9 +31,9 @@ public class PasswordEncryptionServiceTest {
         byte[] salt = new byte[8];
         secureRandom.nextBytes(salt);
 
-        String expectedSalt = Base64.getEncoder().encodeToString(salt);
+        String expectedSalt = Base64.encodeBase64String(salt);
         byte[] testTargetSalt = passwordEncryptionService.generateSalt();
-        String actualSalt = Base64.getEncoder().encodeToString(testTargetSalt);
+        String actualSalt = Base64.encodeBase64String(testTargetSalt);
 
         assertEquals(expectedSalt.length(), actualSalt.length());
     }
@@ -45,7 +45,7 @@ public class PasswordEncryptionServiceTest {
         secureRandom.nextBytes(salt);
 
         byte[] testTargetSalt = passwordEncryptionService.generateSalt();
-        String actualSalt = Base64.getEncoder().encodeToString(testTargetSalt);
+        String actualSalt = Base64.encodeBase64String(testTargetSalt);
 
         assertEquals("=", actualSalt.substring(11, 12));
     }
